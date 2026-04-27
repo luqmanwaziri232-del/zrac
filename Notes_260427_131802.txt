@@ -1,0 +1,810 @@
+<meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ZRAC – Zaki Rawan Academic Center</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Rajdhani:wght@500;700&family=Noto+Naskh+Arabic:wght@400;700&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --orange: #E8621A;
+      --orange-light: #F2893A;
+      --orange-pale: #FAD5B5;
+      --navy: #1A2A6C;
+      --navy-deep: #0D1A4A;
+      --navy-mid: #253580;
+      --white: #FFFFFF;
+      --off-white: #F8F6F2;
+      --gold: #C9922A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Rajdhani', sans-serif;
+      background: var(--off-white);
+      color: var(--navy-deep);
+      overflow-x: hidden;
+    }
+
+    /* ── NAVBAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 48px;
+      background: rgba(13, 26, 74, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--orange);
+      box-shadow: 0 4px 30px rgba(232,98,26,0.18);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo-icon {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -1px;
+      box-shadow: 0 0 18px rgba(232,98,26,0.4);
+    }
+
+    .nav-title {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-title span:first-child {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 2px;
+    }
+
+    .nav-title span:last-child {
+      font-size: 10px;
+      color: var(--orange-light);
+      letter-spacing: 1px;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.8);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--orange-light); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, #1e3a8a 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 48px 60px;
+    }
+
+    /* geometric bg shapes */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,98,26,0.18) 0%, transparent 70%);
+      animation: pulse 6s ease-in-out infinite;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,98,26,0.1) 0%, transparent 70%);
+      animation: pulse 8s ease-in-out infinite reverse;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.1); opacity: 0.7; }
+    }
+
+    /* diagonal stripe */
+    .hero-stripe {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 60px,
+        rgba(255,255,255,0.015) 60px,
+        rgba(255,255,255,0.015) 61px
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 860px;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(232,98,26,0.15);
+      border: 1px solid rgba(232,98,26,0.4);
+      color: var(--orange-light);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 6px 20px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+      animation: fadeUp 1s ease 0.2s both;
+    }
+
+    .hero-logo-wrap {
+      margin-bottom: 28px;
+      animation: fadeUp 1s ease 0.3s both;
+    }
+
+    .hero-logo-circle {
+      width: 110px;
+      height: 110px;
+      margin: 0 auto;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 60px rgba(232,98,26,0.5), 0 0 120px rgba(232,98,26,0.2);
+      position: relative;
+    }
+
+    .hero-logo-circle::before {
+      content: '';
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 2px solid rgba(232,98,26,0.3);
+      animation: spin 12s linear infinite;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .hero-logo-circle span {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -2px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(42px, 7vw, 78px);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.05;
+      margin-bottom: 8px;
+      animation: fadeUp 1s ease 0.4s both;
+    }
+
+    .hero h1 span {
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-subtitle-ar {
+      font-family: 'Noto Naskh Arabic', serif;
+      font-size: 22px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 24px;
+      direction: rtl;
+      animation: fadeUp 1s ease 0.5s both;
+    }
+
+    .hero-desc {
+      font-size: 20px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.7;
+      max-width: 620px;
+      margin: 0 auto 40px;
+      font-weight: 500;
+      animation: fadeUp 1s ease 0.6s both;
+    }
+
+    .hero-desc strong {
+      color: var(--orange-light);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      animation: fadeUp 1s ease 0.7s both;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      color: white;
+      padding: 16px 40px;
+      border-radius: 8px;
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      box-shadow: 0 8px 30px rgba(232,98,26,0.4);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 14px 40px rgba(232,98,26,0.5);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 16px 40px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.3);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 0.3s, background 0.3s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--orange);
+      background: rgba(232,98,26,0.1);
+    }
+
+    /* scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.4);
+      font-size: 11px;
+      letter-spacing: 2px;
+      animation: fadeUp 1s ease 1.2s both;
+    }
+
+    .scroll-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--orange);
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(10px); }
+    }
+
+    /* ── FEATURES ── */
+    .features {
+      padding: 100px 48px;
+      background: var(--off-white);
+    }
+
+    .section-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(30px, 4vw, 48px);
+      font-weight: 900;
+      color: var(--navy-deep);
+      margin-bottom: 64px;
+      line-height: 1.2;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px 32px;
+      border: 1px solid rgba(26,42,108,0.08);
+      box-shadow: 0 4px 24px rgba(26,42,108,0.07);
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+
+    .feature-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 48px rgba(26,42,108,0.14);
+    }
+
+    .feature-card:hover::before { transform: scaleX(1); }
+
+    .feature-icon {
+      width: 58px; height: 58px;
+      background: linear-gradient(135deg, rgba(232,98,26,0.12), rgba(242,137,58,0.08));
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    .feature-card h3 {
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--navy-deep);
+      margin-bottom: 10px;
+      letter-spacing: 0.5px;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      color: #5a6a8a;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* ── STATS ── */
+    .stats {
+      background: linear-gradient(135deg, var(--navy-deep), var(--navy));
+      padding: 80px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stats::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        90deg,
+        transparent,
+        transparent 80px,
+        rgba(255,255,255,0.02) 80px,
+        rgba(255,255,255,0.02) 81px
+      );
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      max-width: 1000px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .stat-item {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 56px;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--orange), var(--orange-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── ABOUT ── */
+    .about {
+      padding: 100px 48px;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-box {
+      background: linear-gradient(135deg, var(--navy), var(--navy-mid));
+      border-radius: 20px;
+      padding: 60px 48px;
+      text-align: center;
+      color: white;
+      box-shadow: 0 20px 60px rgba(26,42,108,0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-box::after {
+      content: '';
+      position: absolute;
+      bottom: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(232,98,26,0.12);
+    }
+
+    .about-box .big-letter {
+      font-family: 'Playfair Display', serif;
+      font-size: 100px;
+      font-weight: 900;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--orange), var(--orange-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .about-box p {
+      font-size: 15px;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.7;
+    }
+
+    .about-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 900;
+      color: var(--navy-deep);
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+
+    .about-text h2 span { color: var(--orange); }
+
+    .about-text p {
+      font-size: 16px;
+      color: #5a6a8a;
+      line-height: 1.8;
+      margin-bottom: 16px;
+    }
+
+    .about-text .ar-text {
+      font-family: 'Noto Naskh Arabic', serif;
+      direction: rtl;
+      font-size: 18px;
+      color: var(--navy);
+      background: rgba(232,98,26,0.07);
+      padding: 16px 20px;
+      border-right: 4px solid var(--orange);
+      border-radius: 4px;
+      margin-top: 24px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy-deep);
+      padding: 60px 48px 32px;
+      color: rgba(255,255,255,0.6);
+      border-top: 3px solid var(--orange);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 900;
+      color: white;
+      margin-bottom: 4px;
+    }
+
+    .footer-brand .logo-sub {
+      font-size: 13px;
+      color: var(--orange-light);
+      letter-spacing: 1px;
+    }
+
+    .footer-brand p {
+      margin-top: 16px;
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-links h4 {
+      color: white;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover { color: var(--orange-light); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+
+    .footer-bottom span { color: var(--orange); }
+
+    /* responsive */
+    @media (max-width: 768px) {
+      nav { padding: 12px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 60px; }
+      .features { padding: 60px 24px; }
+      .stats { padding: 60px 24px; }
+      .about { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+      footer { padding: 48px 24px 24px; }
+      .footer-top { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">
+      <div class="nav-logo-icon">Z</div>
+      <div class="nav-title">
+        <span>ZRAC</span>
+        <span>Zaki Rawan Academic Center</span>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#features">Courses</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-stripe"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ English Grammar Mastery ✦</div>
+
+      <div class="hero-logo-wrap">
+        <div class="hero-logo-circle">
+          <span>Z</span>
+        </div>
+      </div>
+
+      <h1>ZRAC<br/><span>Academic Center</span></h1>
+      <p class="hero-subtitle-ar">ذکي روان علمي مرکز</p>
+
+      <p class="hero-desc">
+        Master <strong>English Grammar</strong> from Zero to Advanced —
+        structured lessons, expert guidance, and real results.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="#features" class="btn-primary">Start Learning</a>
+        <a href="#about" class="btn-secondary">Learn More</a>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>SCROLL</span>
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <p class="section-label">What We Offer</p>
+    <h2 class="section-title">Grammar From Zero to Hero</h2>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Beginner Level</h3>
+        <p>Start from the very basics — alphabet, simple sentences, and everyday vocabulary with clear explanations.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔤</div>
+        <h3>Grammar Rules</h3>
+        <p>Learn all tenses, parts of speech, sentence structure, and punctuation in a simple and logical way.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🎯</div>
+        <h3>Advanced Level</h3>
+        <p>Master complex grammar, academic writing, and professional English to reach full fluency.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✅</div>
+        <h3>Practice & Tests</h3>
+        <p>Reinforce every lesson with exercises and quizzes designed to build confidence and accuracy.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-number">500+</div>
+        <div class="stat-label">Students</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">50+</div>
+        <div class="stat-label">Lessons</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">3</div>
+        <div class="stat-label">Levels</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-number">100%</div>
+        <div class="stat-label">Free Access</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-visual">
+      <div class="about-box">
+        <div class="big-letter">ZRAC</div>
+        <p>Zaki Rawan Academic Center — dedicated to quality English education for every student.</p>
+      </div>
+    </div>
+    <div class="about-text">
+      <h2>Why Choose <span>ZRAC?</span></h2>
+      <p>We believe every student deserves access to high-quality English grammar education. Our center provides clear, structured, and engaging lessons for all levels.</p>
+      <p>From complete beginners to advanced learners — our step-by-step approach makes grammar easy, logical, and enjoyable.</p>
+      <div class="ar-text">د انګلیسي ګرامر د صفر څخه تر پایه پورې زده کړه — ذکي روان علمي مرکز</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo-text">ZRAC</div>
+        <div class="logo-sub">Zaki Rawan Academic Center</div>
+        <p>Your trusted partner in mastering English Grammar — from zero to advanced.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="#features">Courses</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Levels</h4>
+        <ul>
+          <li><a href="#">Beginner</a></li>
+          <li><a href="#">Intermediate</a></li>
+          <li><a href="#">Advanced</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2026 <span>ZRAC</span> – Zaki Rawan Academic Center. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
